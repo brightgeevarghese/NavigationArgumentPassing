@@ -21,16 +21,21 @@ fun ScreenTwo(navController: NavController, modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        val student = Student("John Doe", 20, "A")
+//        val student = Student("John Doe", 20, "A")
+        val students = listOf(
+            Student("John Doe", 20, "A"),
+            Student("Jane Smith", 21, "B"),
+            Student("Bob Johnson", 19, "C")
+        )
         //Convert student to json string
-        val studentData = Json.encodeToString(Student.serializer(), student)
+        val studentsData = Json.encodeToString(students)
         Button(onClick = { navController.popBackStack() }) {
             Text(text = "Go to Previous")
         }
         val data = navController.currentBackStackEntry?.arguments?.getString("data")?:"Loading..."
         Text(text = "Screen Two: $data")
         // Button to navigate to "screen-3" with the serialized student data as an argument
-        Button(onClick = { navController.navigate("screen-3/$studentData") }) {
+        Button(onClick = { navController.navigate("screen-3/$studentsData") }) {
             Text(text = "Go to Screen Three")
         }
     }

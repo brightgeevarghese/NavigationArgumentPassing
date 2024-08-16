@@ -24,10 +24,10 @@ fun ScreenThree(navController: NavController, modifier: Modifier = Modifier) {
             Text(text = "Go to Previous")
         }
         // Retrieve the JSON string from the navigation arguments
-        val data = navController.currentBackStackEntry?.arguments?.getString("data2")?:"{}"
+        val data = navController.currentBackStackEntry?.arguments?.getString("data2")?:"[]"
         //Deserialize json string to student object
-        val student = Json.decodeFromString(Student.serializer(), data)
-        Text(text = "Screen Three: $student")
+        val students: List<Student> = Json.decodeFromString<List<Student>>(data)
+        Text(text = "Screen Three: $students")
 
         Button(onClick = { navController.popBackStack(navController.graph.startDestinationId, false) }) {
             Text(text = "Go to Home")
