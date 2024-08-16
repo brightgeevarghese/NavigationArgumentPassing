@@ -16,8 +16,7 @@ import edu.miu.navdatatransfer.ui.screens.ScreenThree
 import edu.miu.navdatatransfer.ui.screens.ScreenTwo
 
 @Composable
-fun App() {
-    val navHostController: NavHostController = rememberNavController()
+fun App(navHostController: NavHostController) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = { TopBar(navController = navHostController) }
